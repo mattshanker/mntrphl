@@ -1,0 +1,17 @@
+{
+  "name": "mentorPhilly",
+  "description": "Description",
+  "author": "Matt",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "github.com/mattshanker/mntrphl"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-util": "^3.0.7"
+  }
+}
