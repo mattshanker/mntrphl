@@ -6,11 +6,9 @@ var client = require('./node_modules/twilio/lib/index')(accountSid, authToken);
 //db query
 
 //end db query
-var http = require('http');
+
 var resp = new twilio.TwimlResponse();
 
-http.createServer(function (req, res) {
-  resp.
 client.messages.create({
   to:'+18565346624',
   from:'+18564524682',

@@ -1,11 +1,11 @@
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+var conn = mysql.createConnection({
   host: 'localhost',
   user: 'archer',
   database: 'test',
 });
 
-connection.connect(function(err) {
+conn.connect(function(err) {
   if (!err){
     console.log('connected!');
   }
@@ -18,12 +18,21 @@ var getInt = function (){
   return Math.floor(Math.random() * (6 - 1  + 1)) + min;
 }
 
+var str = [];
 var ret = [];
-connection.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
+var na = "";
+var ph = "";
+var bo = "";
+
+conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
-  console.log(res);
   ret = JSON.stringify(res); 
   console.log(ret);
+  str = ret.split('"'); 
+  na = (str[3]);
+  ph = (str[7]);
+  bo = (na + " " + ph);
+
   }
   if (err){
   console.log(err);
@@ -31,7 +40,7 @@ connection.query('SELECT name, contact from mentor where a = "1"', function(err,
 });
 
 
-connection.end(function(err){
+conn.end(function(err){
   if(!err){
     console.log('bye');
   }

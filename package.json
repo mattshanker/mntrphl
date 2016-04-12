@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
+    "http": "0.0.0",
     "node-mysql": "^0.4.2",
     "twilio": "^2.9.1"
   },
