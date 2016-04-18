@@ -3,6 +3,7 @@
   "description": "Description",
   "author": "Matt",
   "version": "0.0.1",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "github.com/mattshanker/mntrphl"
@@ -11,6 +12,7 @@
     "express": "^4.13.4",
     "http": "0.0.0",
     "node-mysql": "^0.4.2",
+    "requirejs": "^2.2.0",
     "twilio": "^2.9.1"
   },
   "devDependencies": {

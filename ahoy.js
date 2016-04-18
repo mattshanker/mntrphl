@@ -1,30 +1,28 @@
-var accountSid = 'AC977952e13253884f685e486620acd187';
-var authToken = '42a012f1897aa4ccc5efd1b2f570f8ff';
+var accountSid = 'AC7bcc0b364cfb5c13824ea2aae31a9baa';
+var authToken = 'c4292b9f2f266bd6dc2690f90eed9a3a';
 
-var client = require('./node_modules/twilio/lib/index')(accountSid, authToken);
+var twilio = require('./node_modules/twilio/lib/index')(accountSid, authToken);
 
 //db query
 
 //end db query
-var http = require('http');
-var resp = new twilio.TwimlResponse();
 
-http.createServer(function (req, res) {
-  resp.
-client.messages.create({
+
+  twilio.messages.create({
   to:'+18565346624',
-  from:'+18564524682',
-  body:
-}, function (err, sms) {
+  from:'+15005550006',
+  body:'some message text'
+  }, function (err, sms) {
   if(!err) {
   process.stdout.write(sms.sid);
 }
   if (err) {
   console.log(err);
 }
+
   console.log('You sent: '+ sms.body);
   console.log('To '+ sms.to);
-});
+  });
 
 console.log('ahoy!');
 
