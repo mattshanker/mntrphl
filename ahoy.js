@@ -14,14 +14,56 @@ var twilio = require('./node_modules/twilio/lib/index')(accountSid, authToken);
   body:'some message text'
   }, function (err, sms) {
   if(!err) {
-  process.stdout.write(sms.sid);
+  console.log('success');
 }
   if (err) {
   console.log(err);
 }
+});
 
-  console.log('You sent: '+ sms.body);
-  console.log('To '+ sms.to);
+  twilio.messages.create({
+  to:'+15005550001',
+  from:'+15005550006',
+  body:'some message text'
+  }, function (err, sms) {
+  if(!err) {
+  process.stdout.write(sms.sid);
+}
+  if (err) {
+  console.log('testing err 21211');
+  console.log(err);
+}
+});
+
+  twilio.messages.create({
+  to:'+15005550009',
+  from:'+15005550006',
+  body:'some message text'
+  }, function (err, sms) {
+  if(!err) {
+  process.stdout.write(sms.sid);
+}
+  if (err) {
+  console.log('testing err 21614');
+  console.log(err);
+}
+});
+
+  twilio.messages.create({
+  to:'+15005550002',
+  from:'+15005550006',
+  body:'some message text'
+  }, function (err, sms) {
+  if(!err) {
+  process.stdout.write(sms.sid);
+}
+  if (err) {
+  console.log('testing err 21612');
+  console.log(err);
+}
+
+//  console.log('You sent: '+ sms.body);
+//  console.log('To '+ sms.to);
   });
 
 console.log('ahoy!');
