@@ -3,12 +3,32 @@ var authToken = 'c4292b9f2f266bd6dc2690f90eed9a3a';
 
 var twilio = require('./node_modules/twilio/lib/index')(accountSid, authToken);
 
+var qs = require('querystring');
+var https = require('https');
+
+var postdata = qs.stringify({
+  'From' : '+15005550006',
+  'To' : '+18565346624',
+  'Url' : 
+});
+
+var options = {
+  host: 'api.twilio.com',
+  path: '/2010-04-01/Accounts/ /Messages.xml',
+  port: 443,
+  method: 'POST',
+  headers: {
+    'Content-Type' : 'application/x-www-form-urlencoded',
+    'Content-Length': postdata.length
+},
+  auth: accountSid + ':' + authToken
+};
 //db query
 
 //end db query
 
 
-  twilio.messages.create({
+  twilio.sms.messages.create({
   to:'+18565346624',
   from:'+15005550006',
   body:'some message text'
