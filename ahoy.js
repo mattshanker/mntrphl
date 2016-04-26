@@ -1,3 +1,4 @@
+var cfg = require('./config.js');
 var accountSid = 'AC7bcc0b364cfb5c13824ea2aae31a9baa';
 var authToken = 'c4292b9f2f266bd6dc2690f90eed9a3a';
 
@@ -6,11 +7,6 @@ var twilio = require('./node_modules/twilio/lib/index')(accountSid, authToken);
 var qs = require('querystring');
 var https = require('https');
 
-var postdata = qs.stringify({
-  'From' : '+15005550006',
-  'To' : '+18565346624',
-  'Url' : 
-});
 
 var options = {
   host: 'api.twilio.com',
