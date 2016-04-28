@@ -24,7 +24,7 @@ var na = "";
 var ph = "";
 var bo = "";
 
-conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
+var dbQuery = conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
   ret = JSON.stringify(res); 
   console.log(ret);
@@ -39,6 +39,7 @@ conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, 
   }
 });
 
+console.log(process.env.NODE_ENV);
 
 conn.end(function(err){
   if(!err){
@@ -49,3 +50,4 @@ conn.end(function(err){
   }
 });
 
+module.export = dbQuery;
