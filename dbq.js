@@ -14,17 +14,13 @@ conn.connect(function(err) {
   }
 });
 
-var getInt = function (){
-  return Math.floor(Math.random() * (6 - 1  + 1)) + min;
-}
-
 var str = [];
 var ret = [];
 var na = "";
 var ph = "";
 var bo = "";
 
-var dbQuery = conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
+function dbQuery () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
   ret = JSON.stringify(res); 
   console.log(ret);
@@ -37,9 +33,10 @@ var dbQuery = conn.query('SELECT name, contact from mentor where a = "1"', funct
   if (err){
   console.log(err);
   }
-});
+}
+)};
 
-console.log(process.env.NODE_ENV);
+//console.log(process.env.NODE_ENV);
 
 conn.end(function(err){
   if(!err){
@@ -50,4 +47,4 @@ conn.end(function(err){
   }
 });
 
-module.export = dbQuery;
+module.export = {getDB: dbQuery}

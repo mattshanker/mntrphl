@@ -26,7 +26,7 @@ var dbQuery = require('./dbq');
 */
 
 //db query
-
+dbQuery.getDB;
 //end db query
 
 var mentorName = 'jimi';
@@ -94,4 +94,3 @@ var message = 'Welcome home, your mentor\'s name is' + mentorName + 'and their p
   });
 
 console.log('ahoy!');
-
