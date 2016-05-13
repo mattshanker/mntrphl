@@ -1,10 +1,10 @@
 module.exports = {
 
-  accountSid:  process.env.TWILIO_ACCOUNT_SID || 'AC7bcc0b364cfb5c13824ea2aae31a9baa',
+  accountSid:  process.env.TWILIO_ACCOUNT_SID || 'AC977952e13253884f685e486620acd187',
 
-  authToken: process.env.TWILIO_AUTH_TOKEN || 'c4292b9f2f266bd6dc2690f90eed9a3a',
+  authToken: process.env.TWILIO_AUTH_TOKEN || '42a012f1897aa4ccc5efd1b2f570f8ff',
 
-  twilioNumber: process.env.TWILIO_NUMBER || '+15005550006', 
+  twilioNumber: process.env.TWILIO_NUMBER || '+18564524682', 
 
   host: process.env.HOST || 'localhost',
 

@@ -14,28 +14,25 @@ conn.connect(function(err) {
   }
 });
 
-var str = [];
-var ret = [];
-var na = "";
-var ph = "";
-var bo = "";
-
 function dbQuery () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
   ret = JSON.stringify(res); 
+//  console.log(res);
   console.log(ret);
-  str = ret.split('"'); 
+
+//  console.log(nam);
+/*  str = ret.split('"'); 
   na = (str[3]);
   ph = (str[7]);
   bo = (na + " " + ph);
-
+*/
   }
   if (err){
   console.log(err);
   }
 }
 )};
-
+dbQuery();
 //console.log(process.env.NODE_ENV);
 
 conn.end(function(err){
