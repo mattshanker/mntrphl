@@ -14,28 +14,36 @@ conn.connect(function(err) {
   }
 });
 
-function dbQuery () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
+var name = function () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
   if (!err){
-  ret = JSON.stringify(res); 
-//  console.log(res);
-  console.log(ret);
-
-//  console.log(nam);
-/*  str = ret.split('"'); 
-  na = (str[3]);
-  ph = (str[7]);
-  bo = (na + " " + ph);
-*/
+var nam = (JSON.stringify(res)); 
   }
   if (err){
   console.log(err);
   }
 }
 )};
-dbQuery();
+
+var phone = function () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
+  if (!err){
+var pho = JSON.stringify(res); 
+return pho;
+
+  }
+  if (err){
+  console.log(err);
+  }
+}
+)};
+//phone();
 //console.log(process.env.NODE_ENV);
 
-conn.end(function(err){
+console.log(name);
+
+exports.phone = phone;
+exports.name = name;
+
+/*conn.end(function(err){
   if(!err){
     console.log('bye');
   }
@@ -43,5 +51,5 @@ conn.end(function(err){
     console.log(err);
   }
 });
+*/
 
-module.export = {getDB: dbQuery}

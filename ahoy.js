@@ -1,3 +1,5 @@
+//name();
+//name();
 var config = require('./config');
 
 var twilio = require('twilio')(config.accountSid, config.authToken);
@@ -10,7 +12,7 @@ var server = require('./server');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
+/*
 app.get('/message', function(req, res) {
   var twiml = new twilio.TwimlResponse();
   twiml.message('hello world!');
@@ -18,9 +20,11 @@ app.get('/message', function(req, res) {
   res.type('text/xml');
   res.send(twiml.toString());
 });
+*/
 
-var mentorName = 'jimi';
-var mentorNumber = '12155557890';
+var dbq = require('./dbq');
+var mentorName = dbq.name();
+var mentorNumber = dbq.phone();
 
 var message = 'Welcome home, your mentor\'s name is ' + mentorName + ' and their phone number is ' + mentorNumber + '. They\'re waiting for your call right now.'
 
