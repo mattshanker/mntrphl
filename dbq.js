@@ -14,9 +14,10 @@ conn.connect(function(err) {
   }
 });
 
-var name = function () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
+var name = [];
+function getName () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
   if (!err){
-var nam = (JSON.stringify(res)); 
+console.log(res);
   }
   if (err){
   console.log(err);
@@ -24,24 +25,20 @@ var nam = (JSON.stringify(res));
 }
 )};
 
-var phone = function () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
-  if (!err){
-var pho = JSON.stringify(res); 
-return pho;
+getName();
 
+var phone = [];
+
+function getPhone () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
+  if (!err){
+phone = JSON.stringify(res); 
   }
   if (err){
   console.log(err);
   }
 }
 )};
-//phone();
 //console.log(process.env.NODE_ENV);
-
-console.log(name);
-
-exports.phone = phone;
-exports.name = name;
 
 /*conn.end(function(err){
   if(!err){

@@ -1,5 +1,3 @@
-//name();
-//name();
 var config = require('./config');
 
 var twilio = require('twilio')(config.accountSid, config.authToken);
@@ -23,8 +21,8 @@ app.get('/message', function(req, res) {
 */
 
 var dbq = require('./dbq');
-var mentorName = dbq.name();
-var mentorNumber = dbq.phone();
+var mentorName = name();
+var mentorNumber = phone();
 
 var message = 'Welcome home, your mentor\'s name is ' + mentorName + ' and their phone number is ' + mentorNumber + '. They\'re waiting for your call right now.'
 
