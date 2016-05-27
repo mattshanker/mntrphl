@@ -21,8 +21,9 @@ app.get('/message', function(req, res) {
 });
 */
 
-var mentorName = dbq.name;
-var mentorNumber = phone;
+var mentorName = dbq.getName();
+var mentorNumber = dbq.getPhone();
+
 
 var message = 'Welcome home, your mentor\'s name is ' + mentorName + ' and their phone number is ' + mentorNumber + '. They\'re waiting for your call right now.'
 console.log(mentorName);

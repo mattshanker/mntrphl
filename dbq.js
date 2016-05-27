@@ -3,6 +3,7 @@ var conn = mysql.createConnection({
   host: 'localhost',
   user: 'archer',
   database: 'test',
+  stringifyObjects: 'true'
 });
 
 conn.connect(function(err) {
@@ -20,7 +21,7 @@ function getName () { conn.query('SELECT name from mentor where a = "1"', functi
       arr = JSON.stringify(res); 
       name = arr.slice(10, 22);
       //console.log(name);
-      exports.name = name;
+      console.log(name);
   }
   if (err){
   console.log(err);
@@ -28,7 +29,6 @@ function getName () { conn.query('SELECT name from mentor where a = "1"', functi
 }
 )};
 
-getName();
 
 var phone = "";
 
@@ -37,22 +37,24 @@ function getPhone () { conn.query('SELECT contact from mentor where a = "1"', fu
     arr = JSON.stringify(res); 
     phone = arr.slice(13, 24);
     //console.log(phone);
-    exports.phone = phone;
+    console.log(phone);
   }
   if (err){
   console.log(err);
   }
 }
 )};
-    console.log(getPhone());
 
-//   exports.getName = getName;
-//    exports.getPhone = getPhone;
+    getName();
+    getPhone();
+   exports.getName = getName;
+    exports.getPhone = getPhone;
 //console.log(process.env.NODE_ENV);
 
-/*conn.end(function(err){
+/*
+ conn.end(function(err){
   if(!err){
-    console.log('bye');
+    console.log('disconnected');
   }
   if (err){
     console.log(err);
