@@ -51,7 +51,6 @@ function getPhone () { conn.query('SELECT contact from mentor where a = "1"', fu
     exports.getPhone = getPhone;
 //console.log(process.env.NODE_ENV);
 
-/*
  conn.end(function(err){
   if(!err){
     console.log('disconnected');
@@ -60,5 +59,4 @@ function getPhone () { conn.query('SELECT contact from mentor where a = "1"', fu
     console.log(err);
   }
 });
-*/
 

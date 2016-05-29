@@ -5,9 +5,29 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var http = require('http');
 
-var dbq = require('./dbq');
+//var dbq = require('./dbq');
 var app = express();
 var server = require('./server');
+var mysql = require('mysql');
+var mentorName = "";
+var mentorNumber = "";
+
+var conn = mysql.createConnection({
+  host: 'localhost',
+  user: 'archer',
+  database: 'test',
+  stringifyObjects: 'true'
+});
+
+conn.connect(function(err) {
+  if (!err){
+    console.log('connected!');
+  }
+  if (err){
+  console.log(err);
+  }
+});
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -21,13 +41,32 @@ app.get('/message', function(req, res) {
 });
 */
 
-var mentorName = dbq.getName();
-var mentorNumber = dbq.getPhone();
+function getName () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
+  if (!err){
+      arr = JSON.stringify(res); 
+      mentorName = arr.slice(10, 22);
+  }
+  if (err){
+  console.log(err);
+  }
+}
+)};
 
+function getPhone () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
+  if (!err){
+    arr = JSON.stringify(res); 
+    mentorNumber = arr.slice(13, 24);
+  }
+  if (err){
+  console.log(err);
+  }
+}
+)};
+
+getName();
+getPhone();
 
 var message = 'Welcome home, your mentor\'s name is ' + mentorName + ' and their phone number is ' + mentorNumber + '. They\'re waiting for your call right now.'
-console.log(mentorName);
-console.log(mentorNumber);
 /*
   twilio.messages.create({
   to:'+18565346624',
@@ -45,4 +84,12 @@ console.log(mentorNumber);
 }
 });
 */
-console.log('ahoy!');
+ conn.end(function(err){
+  if(!err){
+    console.log('disconnected');
+  }
+  if (err){
+    console.log(err);
+  }
+});
+console.log(message);
