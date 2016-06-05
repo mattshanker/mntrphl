@@ -16,10 +16,10 @@ conn.connect(function(err) {
 });
 
 var name = "";
-function getName () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
+exports.getName = function () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
   if (!err){
       arr = JSON.stringify(res); 
-      name = arr.slice(10, 22);
+      var name = arr.slice(10, 22);
       //console.log(name);
       console.log(name);
   }
@@ -32,11 +32,11 @@ function getName () { conn.query('SELECT name from mentor where a = "1"', functi
 
 var phone = "";
 
-function getPhone () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
+exports.getPhone = function () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
     arr = JSON.stringify(res); 
-    phone = arr.slice(13, 24);
-    //console.log(phone);
+    var phone = arr.slice(13, 24);
+    console.log(arr);
     console.log(phone);
   }
   if (err){
@@ -45,18 +45,16 @@ function getPhone () { conn.query('SELECT contact from mentor where a = "1"', fu
 }
 )};
 
-    getName();
-    getPhone();
-   exports.getName = getName;
-    exports.getPhone = getPhone;
+//   exports.getName = getName;
+ //   exports.getPhone = getPhone;
 //console.log(process.env.NODE_ENV);
 
- conn.end(function(err){
-  if(!err){
-    console.log('disconnected');
-  }
-  if (err){
-    console.log(err);
-  }
-});
+// conn.end(function(err){
+//  if(!err){
+//    console.log('disconnected');
+//  }
+//  if (err){
+//    console.log(err);
+//  }
+//});
 
