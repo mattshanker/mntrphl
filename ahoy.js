@@ -9,12 +9,11 @@ var db = require('./dbq');
 var app = express();
 var server = require('./server');
 var mysql = require('mysql');
-var mentorName = "";
-var mentorNumber = "";
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 /*
 app.get('/message', function(req, res) {
   var twiml = new twilio.TwimlResponse();
@@ -25,14 +24,27 @@ app.get('/message', function(req, res) {
 });
 */
 
-var name = db.getName();
-var phone = db.getPhone();
+var phone = [];
+var name = [];
+
+function getFromDB () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
+  if (!err){
+    console.log(res);
+    var phone = res[0].contact;
+    var name = res[0].name;
+    console.log(Array.isArray(phone));
+    console.log(name);
+  }
+  if (err){
+  console.log(err);
+  }
+}
+)};
+
 
 function sendMessage() {
 var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone number is ' + phone + '. They\'re waiting for your call right now.'
 
-//  getName();
-//  getPhone();
 
   twilio.messages.create({
   to:'+18565346624',

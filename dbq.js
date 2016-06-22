@@ -15,12 +15,13 @@ conn.connect(function(err) {
   }
 });
 
-var name = "";
-exports.getName = function () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
+/*
+var name = [];
+function getName () { conn.query('SELECT name from mentor where a = "1"', function(err, res, fields){
   if (!err){
       arr = JSON.stringify(res); 
+      console.log(res);
       var name = arr.slice(10, 22);
-      //console.log(name);
       console.log(name);
   }
   if (err){
@@ -28,16 +29,18 @@ exports.getName = function () { conn.query('SELECT name from mentor where a = "1
   }
 }
 )};
+*/
 
+var phone = [];
+var name = [];
 
-var phone = "";
-
-exports.getPhone = function () { conn.query('SELECT contact from mentor where a = "1"', function(err, res, fields){
+function getFromDB () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
-    arr = JSON.stringify(res); 
-    var phone = arr.slice(13, 24);
-    console.log(arr);
-    console.log(phone);
+    console.log(res);
+    var phone = res[0].contact;
+    var name = res[0].name;
+    console.log(Array.isArray(phone));
+    console.log(name);
   }
   if (err){
   console.log(err);
@@ -45,16 +48,18 @@ exports.getPhone = function () { conn.query('SELECT contact from mentor where a 
 }
 )};
 
-//   exports.getName = getName;
- //   exports.getPhone = getPhone;
-//console.log(process.env.NODE_ENV);
+getFromDB();
 
-// conn.end(function(err){
-//  if(!err){
-//    console.log('disconnected');
-//  }
-//  if (err){
-//    console.log(err);
-//  }
-//});
+ conn.end(function(err){
+  if(!err){
+    console.log('disconnected');
+  }
+  if (err){
+    console.log(err);
+  }
+});
+
+    console.log(name);
+
+    console.log(phone);
 
