@@ -39,8 +39,9 @@ function getFromDB () { conn.query('SELECT name, contact from mentor where a = "
     console.log(res);
     var phone = res[0].contact;
     var name = res[0].name;
-    console.log(Array.isArray(phone));
+    console.log(Array.isArray(name));
     console.log(name);
+    console.log(phone);
   }
   if (err){
   console.log(err);
@@ -59,7 +60,4 @@ getFromDB();
   }
 });
 
-    console.log(name);
-
-    console.log(phone);
 

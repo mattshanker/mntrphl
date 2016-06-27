@@ -35,13 +35,38 @@ function getFromDB () { conn.query('SELECT name, contact from mentor where a = "
     console.log(Array.isArray(phone));
     console.log(name);
   }
+
+  function () {
+var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone number is ' + phone + '. They\'re waiting for your call right now.'
+
+  twilio.messages.create({
+  to:'+18565346624',
+  from: config.twilioNumber,
+  body: message
+  }, function (err, sms) {
+  if(!err) {
+  console.log('success!');
+  console.log('SMS sent to: ' + sms.to);
+  console.log('message: ' + sms.body);
+
+}
+  if (err) {
+  console.log(err);
+}
+
+});
+
+},
   if (err){
   console.log(err);
   }
-}
+},
+
+
+
 )};
 
-
+/*
 function sendMessage() {
 var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone number is ' + phone + '. They\'re waiting for your call right now.'
 
@@ -62,6 +87,7 @@ var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone
 }
 });
 }
+*/
 
-sendMessage();
+//sendMessage();
 
