@@ -34,10 +34,10 @@ function getFromDB () { conn.query('SELECT name, contact from mentor where a = "
     var name = res[0].name;
     console.log(Array.isArray(phone));
     console.log(name);
-  }
+  
 
   function () {
-var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone number is ' + phone + '. They\'re waiting for your call right now.'
+var message = 'mentor\'s name is ' + name + 'phone number ' + phone; 
 
   twilio.messages.create({
   to:'+18565346624',
@@ -48,7 +48,7 @@ var message = 'Welcome home, your mentor\'s name is ' + name + ' and their phone
   console.log('success!');
   console.log('SMS sent to: ' + sms.to);
   console.log('message: ' + sms.body);
-
+  }
 }
   if (err) {
   console.log(err);
