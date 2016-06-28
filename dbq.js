@@ -37,7 +37,7 @@ var name = [];
 function getFromDB () { conn.query('SELECT name, contact from mentor where a = "1"', function(err, res, fields){
   if (!err){
     console.log(res);
-    var phone = res[0].contact;
+    phone.push(res[0].contact);
     var name = res[0].name;
     console.log(Array.isArray(name));
     console.log(name);
